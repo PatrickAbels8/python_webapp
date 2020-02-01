@@ -1,3 +1,40 @@
-h1 {
-	color: red;
+ul.vertical li{
+	float: left;
+	clear: left;
+}
+
+ul.dash {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+ul.dash li {
+	float: left;
+}
+
+ul.dash li a {
+	display: block;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+}
+
+ul.dash li a:hover:not(.active) {
+	background-color: #111;
+}
+
+.padd {
+	padding: 15px 15px;
+}
+
+.active {
+	background-color: #4CAF50;
+}
+
+.padd.active {
+	padding: 15px 15px;
+	background-color: #4CAF50;
 }
