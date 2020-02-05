@@ -1,22 +1,22 @@
 from flask import Flask, request, render_template, escape, url_for, redirect
 import os
-
-# MAIN FUNCTION
-def getData(json):
-	return 'Search for %s gives: tba' % json
+import json
 
 # create Flask with reference to style sheet
 app = Flask(__name__, static_url_path='/static')
 DEFAULT_PORT = 2000
 
 # infos about HTTP: https://www.tutorialspoint.com/flask/flask_http_methods.htm
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 @app.route('/home', methods=['POST', 'GET'])
 def home():
 	if request.method == 'GET':
 		return render_template('home.html')
 	elif request.method == 'POST':
-		return getData(request.form['json'])
+		data = request.form['json']
+		# return 'Nothing found for %s' % json_data
+		# data = request.get_json()
+		return json.dumps(data)
 
 @app.route('/doc')
 @app.route('/docu')
@@ -50,3 +50,7 @@ if __name__ == '__main__':
 	port = os.environ.get('PORT', DEFAULT_PORT)
 	# host='0.0.0.0' for global access
 	app.run(port=port)
+
+# todo:
+# 	- request response (https://realpython.com/python-requests/, )
+# 	- json (https://docs.python.org/3/library/json.html#py-to-json-table)
